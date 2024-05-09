@@ -1,0 +1,10 @@
+asgiref==3.8.1
+Django==5.0.5
+django-modeltranslation==0.18.11
+django-stubs==5.0.0
+django-stubs-ext==5.0.0
+djangorestframework==3.15.1
+sqlparse==0.5.0
+tomli==2.0.1
+types-PyYAML==6.0.12.20240311
+typing_extensions==4.11.0
