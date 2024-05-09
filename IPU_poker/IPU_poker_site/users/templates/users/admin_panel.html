@@ -1,0 +1,107 @@
+{% extends 'users/base.html' %}
+{% block body %}
+    <div class="container">
+        <section class="tables redact-tables">             
+            <div id="white-list" class="tables__item">
+                <div class="tables__title white-list-title">
+                    <h3 class="tables__item-title section-title">Белый список</h3>
+                </div>
+                <ul class="tables__list reset-list">
+                    <li class="tables__list-item first-table-list-item">
+                        {% for head in w_headers %}
+                            <div class="tables__list-item-block-white w-list-card tables__list-item-block-header-redact">
+                                <a href="{% url 'update_whead' pk=head.pk %}" class="tables__headers-redact-link reset-link redact-whead">изменить</a>
+                                {{ head.name }}
+                            </div>
+                        {% endfor %}
+                    </li>
+                    {% for row in w_rows %}
+                        
+                        <li class="tables__list-item">
+                            <div class="tables__list-item-redact-block">
+                                <a href="{% url 'update_wrow' pk=row.pk %}" class="tables__list-item-redact-link redact-row-link reset-link">Редактировать</a>
+                                <a href="{% url 'delete_wrow' pk=row.pk %}" class="tables__list-item-redact-link list-item-delete-link reset-link">Удалить</a>    
+                            </div>
+                            <div class="tables__list-item-block-white w-list-card redact-tables-list-item ">
+                                {{ row.col_1 }}
+                            </div>
+                            <div class="tables__list-item-block-white w-list-card redact-tables-list-item">
+                                {{ row.col_2 }}
+                            </div>
+                            <div class="tables__list-item-block-white w-list-card redact-tables-list-item">
+                                {{ row.col_3 }}
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <a href="{% url 'create_wrow' %}" class="tables__item-create-row header__nav-link reset-link">Добавить</a>
+            </div>
+            
+            <div id="black-list" class="tables__item">
+                <div class="tables__title black-list-title">
+                    <h3 class="tables__item-title section-title">Чёрный список</h3>
+                </div>
+                <div class="tables__headers-redact">
+                    {% for head in b_headers %}
+                            
+                    {% endfor %}
+                </div>
+                <ul class="tables__list reset-list">
+                    <li class="tables__list-item first-table-list-item">
+                        {% for head in b_headers %}
+                            <div class="tables__list-item-block tables__list-item-block-header-redact">
+                                <a href="{% url 'update_bhead' pk=head.pk %}" class="tables__headers-redact-link reset-link redact-bhead">изменить</a>
+                                {{ head.name }}
+                            </div>
+                        {% endfor %}
+                    </li>
+                    {% for row in b_rows %}
+                        <li class="tables__list-item">
+                            <div class="tables__list-item-redact-block">
+                                <a href="{% url 'update_brow' pk=row.pk %}" class="tables__list-item-redact-link redact-row-link  reset-link">Редактировать</a>
+                                <a href="{% url 'delete_brow' pk=row.pk %}" class="tables__list-item-redact-link list-item-delete-link reset-link">Удалить</a>    
+                            </div>
+                            
+                            <div class="tables__list-item-block redact-tables-list-item">
+                                {{ row.col_1 }}
+                            </div>
+                            <div class="tables__list-item-block redact-tables-list-item">
+                                {{ row.col_2 }}
+                            </div>
+                            <div class="tables__list-item-block redact-tables-list-item">
+                                {{ row.col_3 }}
+                            </div>
+                            <div class="tables__list-item-block redact-tables-list-item">
+                                {% if row.col_4 == None %}
+                                    
+                                {% else %}
+                                    {{ row.col_4 }}
+                                {% endif %} 
+                            </div>
+                            <div class="tables__list-item-block redact-tables-list-item">
+                                {{ row.col_5 }}
+                            </div>
+                            <div class="tables__list-item-block redact-tables-list-item">
+                                {% if row.col_6 == None %}
+                                
+                                {% else %}
+                                    {{ row.col_6 }}
+                                {% endif %}
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <a href="{% url 'create_brow' %}" class="tables__item-create-row header__nav-link reset-link">Добавить</a>
+            </div>
+        </section>
+    </div>
+    <div class="modal">
+        <div class="modal-wrapper">
+            <h4 class="modal-title reset-text">Вы уверены?</h4>
+            <div class="modal-buttons-block">
+                <button class="reset-button modal-button modal-confirm">удалить</button>
+                <button class="reset-button modal-button modal-cancel">отмена</button>
+            </div>
+        </div>
+    </div>
+{% endblock %}

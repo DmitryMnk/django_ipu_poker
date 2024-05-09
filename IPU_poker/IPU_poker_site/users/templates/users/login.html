@@ -1,0 +1,25 @@
+{% extends 'users/base.html' %}
+{% block body %}
+    <div class="container">
+            <section class="auth">
+                <div class="auth__content">
+                    <ul class="auth__form-errors-list reset-list">
+                        {% for error in form.non_field_errors %}
+                            <li class='auth__form-errors-list-item'>{{ error }}</li>
+                        {% endfor %}
+                   </ul> 
+                    <h3 class="auth__title reset-text">авторизация</h2>
+                    <form class="auth__form" method="POST">
+                        {% csrf_token %}
+                        {% for field in form %}
+                            <div class="auth__form-block">
+                                {{ field.errors }}
+                                {{field}}
+                            </div>
+                        {% endfor %}
+                        <button class="auth__form-button reset-button">войти</button>
+                    </form>
+                </div>
+            </section>
+    </div>
+{% endblock %}

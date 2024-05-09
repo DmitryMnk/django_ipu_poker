@@ -1,0 +1,221 @@
+{% load static %}
+{% load  i18n %}
+{% load  l10n %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'base_css/normalize.css' %} ">
+    <link rel="stylesheet" href="{% static 'base_css/fonts.css' %}">
+    <link rel="stylesheet" href="{% static 'package/swiper-bundle.min.css' %}" />
+    <link rel="stylesheet" href="{% static '/base_css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'base_css/media.css' %}">
+
+
+    <script src="{% static 'base_js/main.js' %}" type="module" defer></script>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <form class="header__language-switch" action="{% url 'set_language' %}" method="post">{% csrf_token %}
+                <input name="next" type="hidden" value="{{ redirect_to }}">
+                <select class="header__language-select"  name="language">
+                    {% get_current_language as LANGUAGE_CODE %}
+                    {% get_available_languages as LANGUAGES %}
+                    {% get_language_info_list for LANGUAGES as languages %}
+                    {% for language in languages %}
+                        <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                            {{ language.name_local }} ({{ language.code }})
+                        </option>
+                    {% endfor %}
+                </select>
+                <button type="submit" class="header__language-button reset-button">Сменить</button>
+            </form>
+
+            <nav class="header__nav">
+                <ul class="header__nav-list reset-list">
+                    <li class="header__nav-list-item">
+                        <a href="{% url 'main' %}" class="header__nav-link reset-link">Главная</a>
+                    </li>
+                    <li class="header__nav-list-item">
+                        <a href="{% url 'lists' %}" class="header__nav-link reset-link">Чёрный лист</a>
+                    </li>
+                    <li class="header__nav-list-item">
+                        <a href="{% url 'main' %}#contacts" class="header__nav-link reset-link">Обучение</a>
+                    </li>
+                    <li class="header__nav-list-item">
+                        <a href="{% url 'main' %}#about" class="header__nav-link reset-link">О нас</a>
+                    </li>
+                    <li class="header__nav-list-item">
+                        <a href="{% url 'main' %}#contacts" class="header__nav-link reset-link">Контакты</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <button class="header__burger reset-button">
+                <span class="header__burger-button-line burger-line-first"></span>
+                <span class="header__burger-button-line burger-line-second"></span>
+                <span class="header__burger-button-line burger-line-third"></span>
+            </button>
+        </header>
+    </div>
+    {% block body %}
+    {% endblock %}
+    <footer class="footer footer">
+            <div class="container">
+                <div class="footer__top">
+                    <div class="footer__top-block">
+                        <h3 class="footer__top-block-title reset-text">Игрокам</h3>
+                        <a href="{% url 'main' %}#contacts" class="footer__top-block-link reset-link">Лучшие покерные приложения</a>
+                        <a href="{% url 'main' %}#contacts" class="footer__top-block-link reset-link">Подборка клубов</a>
+                        <a href="{% url 'main' %}#contacts" class="footer__top-block-link reset-link">Где скачать покер</a>
+                        <a href="{% url 'main' %}#contacts" class="footer__top-block-link reset-link">Программы для покера</a>
+                    </div>
+
+                    <div class="footer__top-block">
+                        <h3 class="footer__top-block-title reset-text">Обучение</h3>
+                        <a href="{% url 'main' %}#contacts" class="footer__top-block-link reset-link">Как создать покерный клуб</a>
+                        <a href="{% url 'main' %}#contacts" class="footer__top-block-link reset-link">Выбор приложения</a>
+                        <a href="{% url 'main' %}#contacts" class="footer__top-block-link reset-link">Покерные расчёты</a>
+                        <a href="{% url 'main' %}#contacts" class="footer__top-block-link reset-link">Рейкбэк</a>
+                        <a href="{% url 'main' %}#contacts" class="footer__top-block-link reset-link">Новости</a>
+                    </div>
+
+                    <div class="footer__top-block">
+                        <h3 class="footer__top-block-title reset-text">Лучшие румы</h3>
+                        <a href="{% url 'main' %}#contacts" class="footer__top-block-link reset-link">PPPoker</a>
+                        <a href="{% url 'main' %}#contacts" class="footer__top-block-link reset-link">PokerBros</a>
+                        <a href="{% url 'main' %}#contacts" class="footer__top-block-link reset-link">iPoker</a>
+                        <a href="{% url 'main' %}#contacts" class="footer__top-block-link reset-link">GGpoker</a>
+                        <a href="{% url 'main' %}#contacts" class="footer__top-block-link reset-link">ClubGG</a>
+                    </div>
+
+                    <div class="footer__top-block">
+                        <h3 class="footer__top-block-title reset-text">Полезное о покере</h3>
+                        <a href="{% url 'lists' %}#black-list" class="footer__top-block-link reset-link">Список покерных мошенников</a>
+                        <a href="{% url 'lists' %}#white-list" class="footer__top-block-link reset-link">Список надёжных клубов</a>
+                        <a href="{% url 'main' %}#contacts" class="footer__top-block-link reset-link">Бонусы покер-румов</a>
+                        <a href="{% url 'main' %}#contacts" class="footer__top-block-link reset-link"> Где начать играть </a>
+                    </div>
+                </div>
+                <nav class="footer__nav">
+                    <ul class="footer__nav-list reset-list">
+                        <li class="footer__nav-list-item">
+                            <a href="{% url 'main' %}" class="footer__nav-list-link reset-link">
+                                главная
+                            </a>
+                        </li>
+                        <li class="footer__nav-list-item">
+                            <a href="{% url 'lists' %}" class="footer__nav-list-link reset-link">
+                                черный лист
+                            </a>
+                        </li>
+                        <li class="footer__nav-list-item">
+                            <a href="{% url 'main' %}#contacts" class="footer__nav-list-link reset-link">
+                                обучение
+                            </a>
+                        </li>
+                        <li class="footer__nav-list-item">
+                            <a href="{% url 'main' %}#about" class="footer__nav-list-link reset-link">
+                                о нас
+                            </a>
+                        </li>
+                        <li class="footer__nav-list-item">
+                            <a href="{% url 'main' %}#contacts" class="footer__nav-list-link reset-link">
+                                Контакты
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="footer__nav-socials reset-list">
+                        <li class="footer__nav-socials-item">
+                            <a href="#" class="footer__nav-socials-link reset-link">
+                                <svg width="40" height="40" viewBox="0 0 40 40"  xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="40" height="40" />
+                                    <path d="M28 12.6022L24.9946 28.2923C24.9946 28.2923 24.5741 29.3801 23.4189 28.8584L16.4846 23.3526L16.4524 23.3364C17.3891 22.4654 24.6524 15.7027 24.9698 15.3961C25.4613 14.9214 25.1562 14.6387 24.5856 14.9974L13.8568 22.053L9.71764 20.6108C9.71764 20.6108 9.06626 20.3708 9.00359 19.8491C8.9401 19.3265 9.73908 19.0439 9.73908 19.0439L26.6131 12.1889C26.6131 12.1889 28 11.5579 28 12.6022Z" />
+                                </svg>
+                            </a>
+                        </li>
+
+                        <li class="footer__nav-socials-item">
+                            <a href="#" class="footer__nav-socials-link reset-link">
+                                <svg width="40" height="40" viewBox="0 0 40 40"  xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="40" height="40" />
+                                    <path d="M20 11.8072C22.6506 11.8072 23.0121 11.8072 24.0964 11.8072C25.0602 11.8072 25.5422 12.0482 25.9036 12.1687C26.3855 12.4096 26.747 12.5301 27.1084 12.8916C27.4699 13.253 27.7108 13.6145 27.8313 14.0964C27.9518 14.4578 28.0723 14.9398 28.1928 15.9036C28.1928 16.988 28.1928 17.2289 28.1928 20C28.1928 22.7711 28.1928 23.0121 28.1928 24.0964C28.1928 25.0602 27.9518 25.5422 27.8313 25.9036C27.5904 26.3855 27.4699 26.747 27.1084 27.1084C26.747 27.4699 26.3855 27.7108 25.9036 27.8313C25.5422 27.9518 25.0602 28.0723 24.0964 28.1928C23.0121 28.1928 22.7711 28.1928 20 28.1928C17.2289 28.1928 16.988 28.1928 15.9036 28.1928C14.9398 28.1928 14.4578 27.9518 14.0964 27.8313C13.6145 27.5904 13.253 27.4699 12.8916 27.1084C12.5301 26.747 12.2892 26.3855 12.1687 25.9036C12.0482 25.5422 11.9277 25.0602 11.8072 24.0964C11.8072 23.0121 11.8072 22.7711 11.8072 20C11.8072 17.2289 11.8072 16.988 11.8072 15.9036C11.8072 14.9398 12.0482 14.4578 12.1687 14.0964C12.4096 13.6145 12.5301 13.253 12.8916 12.8916C13.253 12.5301 13.6145 12.2892 14.0964 12.1687C14.4578 12.0482 14.9398 11.9277 15.9036 11.8072C16.988 11.8072 17.3494 11.8072 20 11.8072ZM20 10C17.2289 10 16.988 10 15.9036 10C14.8193 10 14.0964 10.241 13.494 10.4819C12.8916 10.7229 12.2892 11.0843 11.6867 11.6867C11.0843 12.2892 10.8434 12.7711 10.4819 13.494C10.241 14.0964 10.1205 14.8193 10 15.9036C10 16.988 10 17.3494 10 20C10 22.7711 10 23.0121 10 24.0964C10 25.1807 10.241 25.9036 10.4819 26.506C10.7229 27.1084 11.0843 27.7108 11.6867 28.3133C12.2892 28.9157 12.7711 29.1566 13.494 29.5181C14.0964 29.759 14.8193 29.8795 15.9036 30C16.988 30 17.3494 30 20 30C22.6506 30 23.0121 30 24.0964 30C25.1807 30 25.9036 29.759 26.506 29.5181C27.1084 29.2771 27.7108 28.9157 28.3133 28.3133C28.9157 27.7108 29.1566 27.2289 29.5181 26.506C29.759 25.9036 29.8795 25.1807 30 24.0964C30 23.0121 30 22.6506 30 20C30 17.3494 30 16.988 30 15.9036C30 14.8193 29.759 14.0964 29.5181 13.494C29.2771 12.8916 28.9157 12.2892 28.3133 11.6867C27.7108 11.0843 27.2289 10.8434 26.506 10.4819C25.9036 10.241 25.1807 10.1205 24.0964 10C23.0121 10 22.7711 10 20 10Z" />
+                                    <path d="M20 14.8193C17.1084 14.8193 14.8193 17.1084 14.8193 20C14.8193 22.8916 17.1084 25.1807 20 25.1807C22.8916 25.1807 25.1807 22.8916 25.1807 20C25.1807 17.1084 22.8916 14.8193 20 14.8193ZM20 23.3735C18.1928 23.3735 16.6265 21.9277 16.6265 20C16.6265 18.1928 18.0723 16.6265 20 16.6265C21.8072 16.6265 23.3735 18.0723 23.3735 20C23.3735 21.8072 21.8072 23.3735 20 23.3735Z" />
+                                    <path d="M25.3012 15.9036C25.9666 15.9036 26.506 15.3642 26.506 14.6988C26.506 14.0334 25.9666 13.494 25.3012 13.494C24.6358 13.494 24.0964 14.0334 24.0964 14.6988C24.0964 15.3642 24.6358 15.9036 25.3012 15.9036Z" />
+                                </svg>
+                            </a>
+                        </li>
+
+                        <li class="footer__nav-socials-item">
+                            <a href="#" class="footer__nav-socials-link reset-link">
+                                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="40" height="40" />
+                                    <path d="M21.6571 20.3648H25.3793L25.9637 16.5605H21.6563V14.4813C21.6563 12.901 22.1696 11.4996 23.6389 11.4996H26V8.17974C25.5852 8.12338 24.7078 8 23.05 8C19.5882 8 17.5587 9.8393 17.5587 14.0297V16.5605H14V20.3648H17.5587V30.821C18.2634 30.9276 18.9773 31 19.7101 31C20.3724 31 21.0189 30.9391 21.6571 30.8522V20.3648Z" fill="white"/>
+                                </svg>
+
+                            </a>
+                        </li>
+
+                        <li class="footer__nav-socials-item">
+                            <a href="#" class="footer__nav-socials-link reset-link">
+                                <svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="40" height="40" />
+                                    <path d="M30.6 14.9C29.9 15.2 29.1 15.4 28.3 15.5C29.1 15 29.8 14.2 30.1 13.3C29.3 13.8 28.5 14.1 27.5 14.3C26.8 13.5 25.7 13 24.6 13C22.4 13 20.6 14.8 20.6 17C20.6 17.3 20.6 17.6 20.7 17.9C17.4 17.7 14.4 16.1 12.4 13.7C12.1 14.3 11.9 15 11.9 15.7C11.9 17.1 12.6 18.3 13.7 19C13 19 12.4 18.8 11.9 18.5C11.9 20.4 13.3 22.1 15.1 22.4C14.8 22.5 14.4 22.5 14 22.5C13.7 22.5 13.5 22.5 13.2 22.4C13.7 24 15.2 25.2 17 25.2C15.6 26.3 13.9 26.9 12 26.9C11.7 26.9 11.4 26.9 11 26.8C12.8 27.9 14.9 28.6 17.2 28.6C24.6 28.6 28.6 22.5 28.6 17.2V16.7C29.4 16.4 30.1 15.7 30.6 14.9Z" fill="white"/>
+                                </svg>
+                            </a>
+                        </li>
+
+                        <li class="footer__nav-socials-item">
+                            <a href="#" class="footer__nav-socials-link reset-link">
+                                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="40" height="40"/>
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M11.2625 27.0568C10.8702 26.9408 10.5123 26.7343 10.219 26.4549C9.9256 26.1754 9.7054 25.8312 9.57695 25.4512C8.84292 23.4874 8.62543 15.2869 10.0391 13.6681C10.5096 13.1414 11.1739 12.8172 11.8878 12.7658C15.6802 12.3677 27.3975 12.4208 28.7432 12.8985C29.1217 13.0183 29.4675 13.2203 29.7547 13.4891C30.0419 13.758 30.263 14.0868 30.4015 14.451C31.2035 16.4812 31.2307 23.8589 30.2928 25.8095C30.044 26.3173 29.6275 26.7285 29.1102 26.9772C27.6965 27.6672 13.1383 27.6539 11.2625 27.0568ZM17.2842 23.2087L24.0808 19.7587L17.2842 16.2821V23.2087Z" fill="white"/>
+                                </svg>
+                            </a>
+                        </li>
+
+                        <li class="footer__nav-socials-item">
+                            <a href="#" class="footer__nav-socials-link reset-link">
+                                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="40" height="40"/>
+                                    <path d="M23.57 23.1629C22.673 23.1629 21.9193 22.442 21.9193 21.5532C21.9193 20.6644 22.673 19.9197 23.57 19.9197C24.467 19.9197 25.1945 20.6644 25.1945 21.5532C25.1945 22.442 24.467 23.1629 23.57 23.1629ZM23.951 26.2872C23.1155 27.1143 21.827 27.5163 20.012 27.5163C20.0082 27.5163 20.0038 27.5156 19.9993 27.5156C19.9955 27.5156 19.991 27.5163 19.9865 27.5163C18.1715 27.5163 16.8837 27.1143 16.049 26.2872C15.7925 26.033 15.7925 25.622 16.049 25.3686C16.3047 25.1152 16.7195 25.1152 16.976 25.3686C17.552 25.9394 18.5367 26.2173 19.9865 26.2173C19.991 26.2173 19.9955 26.218 19.9993 26.218C20.0038 26.218 20.0082 26.2173 20.012 26.2173C21.4617 26.2173 22.4473 25.9394 23.024 25.3686C23.2805 25.1144 23.6953 25.1152 23.951 25.3686C24.2068 25.6228 24.2068 26.0337 23.951 26.2872ZM14.8055 21.5532C14.8055 20.6651 15.5578 19.9197 16.454 19.9197C17.351 19.9197 18.0785 20.6651 18.0785 21.5532C18.0785 22.442 17.351 23.1629 16.454 23.1629C15.5578 23.1629 14.8055 22.442 14.8055 21.5532ZM27.998 11.299C28.6055 11.299 29.0998 11.7888 29.0998 12.39C29.0998 12.992 28.6055 13.4817 27.998 13.4817C27.3905 13.4817 26.8962 12.992 26.8962 12.39C26.8962 11.7888 27.3905 11.299 27.998 11.299ZM32 19.7852C32 18.209 30.7062 16.927 29.1155 16.927C28.427 16.927 27.7948 17.1678 27.2983 17.5684C25.5395 16.4729 23.3075 15.813 20.915 15.6733L22.163 11.7635L25.5928 12.5639C25.6828 13.8013 26.7267 14.7808 27.998 14.7808C29.3277 14.7808 30.41 13.7084 30.41 12.39C30.41 11.0724 29.3277 10 27.998 10C27.068 10 26.2595 10.5247 25.8568 11.2909L21.8713 10.3612C21.5375 10.2831 21.2 10.4734 21.0965 10.7974L19.547 15.6503C16.9693 15.7127 14.546 16.3749 12.6582 17.5342C12.1685 17.1544 11.5527 16.927 10.8845 16.927C9.29375 16.927 8 18.209 8 19.7852C8 20.7595 8.495 21.6208 9.24875 22.1366C9.21725 22.3633 9.20075 22.5914 9.20075 22.8225C9.20075 24.7927 10.3565 26.6253 12.455 27.9823C14.4665 29.2836 17.129 30 19.9513 30C22.7735 30 25.436 29.2836 27.4475 27.9823C29.546 26.6253 30.7017 24.7927 30.7017 22.8225C30.7017 22.6122 30.6875 22.4034 30.6612 22.196C31.4653 21.6885 32 20.7974 32 19.7852Z" fill="white"/>
+                                </svg>
+                            </a>
+                        </li>
+
+                        <li class="footer__nav-socials-item">
+                            <a href="#" class="footer__nav-socials-link reset-link">
+                                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_3708_1336)">
+                                    <rect width="40" height="40" />
+                                    <path d="M29.9764 14.2535C29.2865 14.2535 28.6033 14.1176 27.966 13.8536C27.3286 13.5896 26.7494 13.2027 26.2616 12.7148C25.7737 12.227 25.3868 11.6478 25.1227 11.0105C24.8587 10.3731 24.7228 9.68991 24.7228 9.00001H20.9695V23.6974C20.9688 24.3675 20.7572 25.0204 20.3647 25.5635C19.9722 26.1066 19.4188 26.5124 18.7827 26.7234C18.1467 26.9344 17.4605 26.9398 16.8212 26.739C16.1819 26.5382 15.6221 26.1412 15.221 25.6044C14.8199 25.0676 14.5979 24.4182 14.5865 23.7482C14.5751 23.0782 14.7749 22.4217 15.1575 21.8716C15.5401 21.3214 16.0862 20.9057 16.7183 20.6833C17.3504 20.4608 18.0364 20.443 18.6792 20.6322V16.9837C17.3132 16.7995 15.9234 17.0365 14.6955 17.6629C13.4677 18.2893 12.4601 19.2755 11.8074 20.4896C11.1548 21.7037 10.888 23.0881 11.0429 24.4578C11.1977 25.8275 11.7667 27.1174 12.6739 28.1552C13.5811 29.1931 14.7834 29.9294 16.1201 30.266C17.4568 30.6025 18.8644 30.5233 20.1549 30.0388C21.4454 29.5543 22.5574 28.6877 23.3423 27.5546C24.1273 26.4215 24.5479 25.0758 24.548 23.6974L24.6569 16.2683C26.1991 17.4004 28.0629 18.0095 29.976 18.0067L29.9764 14.2535Z" fill="white"/>
+                                    </g>
+                                    <defs>
+                                    <clipPath id="clip0_3708_1336">
+                                    <rect width="40" height="40" fill="white"/>
+                                    </clipPath>
+                                    </defs>
+                                </svg>
+                            </a>
+                        </li>
+
+                    </ul>
+                </nav>
+                <div class="footer__bottom">
+                    <div class="footer__bottom-left">
+                        <p class="footer__botom-text text-reset">
+                            Игры на деньги могут вызывать игровую зависимость. Относитесь к покеру, как к досугу, а не источнику дохода. Контролируйте расходы и придерживайтесь принципов Ответственной игры. Если замечаете признаки зависимости, обратитесь за помощью к специалистам.
+                        </p>
+                    </div>
+                    <div class="footer__bottom-right">
+
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+</body>
+</html>

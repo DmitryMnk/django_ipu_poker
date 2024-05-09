@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'base_css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'base_css/fonts.css' %}">
+    <link rel="stylesheet" href="{% static 'base_css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'base_css/admin.css' %}">
+    <link rel="stylesheet" href="{% static 'base_css/media.css' %}">
+    <script src="{% static 'base_js/admin.js' %}" type="module" defer ></script>
+    <title>{{ title }}</title>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <nav class="header__nav">
+                <ul class="header__nav-list users-header-nav-list reset-list">
+                    <li class="header__nav-list-item">
+                        <a href="{% url 'main' %}" class="header__nav-link reset-link">Главная</a>
+                    </li>
+                    <li class="header__nav-list-item">
+                        <a href="{% url 'lists' %}" class="header__nav-link reset-link">Чёрный лист</a>
+                    </li>
+
+                    <li class="header__nav-list-item">
+                        <a href="{% url 'admin_panel' %}" class="header__nav-link reset-link">Админ панель</a>
+                    </li>
+                    
+                    <li class="header__nav-list-item">
+                        <a href="{% url 'logout' %}" class="header__nav-link reset-link">Выйти</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+    </div>
+    {% block body %}
+    {% endblock %}
+</body>
+</html>
