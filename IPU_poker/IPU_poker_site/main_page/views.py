@@ -14,6 +14,13 @@ def get_table():
 class MainView(TemplateView):
     template_name = 'main_page/main.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context.update({
+            'title': ''
+        })
+        return context
+
 
 class TablesView(TemplateView):
     template_name = 'main_page/lists.html'
@@ -22,6 +29,7 @@ class TablesView(TemplateView):
         context = super().get_context_data(**kwargs)
         w_headers, b_headers, b_rows, w_rows = get_table()
         context.update({
+            'title': 'Черный список',
             'w_headers': w_headers,
             'b_headers': b_headers,
             'w_rows': w_rows,

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-09 17:09+0000\n"
+"POT-Creation-Date: 2024-05-10 11:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
 #: IPU_poker_site/settings.py:126
 msgid "Russian"
 msgstr ""
@@ -24,3 +25,267 @@ msgstr ""
 #: IPU_poker_site/settings.py:127
 msgid "English"
 msgstr ""
+
+#: main_page/templates/main_page/base.html:40
+msgid "Главная"
+msgstr "Home"
+
+#: main_page/templates/main_page/base.html:43
+#: main_page/templates/main_page/lists.html:115
+msgid "Чёрный список"
+msgstr "Black list"
+
+#: main_page/templates/main_page/base.html:46
+#: main_page/templates/main_page/base.html:78
+msgid "Обучение"
+msgstr "Learn"
+
+#: main_page/templates/main_page/base.html:49
+#: main_page/templates/main_page/main.html:119
+msgid "О нас"
+msgstr "About us"
+
+#: main_page/templates/main_page/base.html:52
+#: main_page/templates/main_page/base.html:127
+msgid "Контакты"
+msgstr "Contacts"
+
+#: main_page/templates/main_page/base.html:70
+msgid "Игрокам"
+msgstr "For players"
+
+#: main_page/templates/main_page/base.html:71
+msgid "Лучшие покерные приложения"
+msgstr "The Best Poker Apps"
+
+#: main_page/templates/main_page/base.html:72
+msgid "Подборка клубов"
+msgstr "A selection of clubs"
+
+#: main_page/templates/main_page/base.html:73
+msgid "Где скачать покер"
+msgstr "Where to download poker"
+
+#: main_page/templates/main_page/base.html:74
+msgid "Программы для покера"
+msgstr "Poker Programs"
+
+#: main_page/templates/main_page/base.html:79
+msgid "Как создать покерный клуб"
+msgstr "How to create a poker club"
+
+#: main_page/templates/main_page/base.html:80
+msgid "Выбор приложения"
+msgstr "Application Selection"
+
+#: main_page/templates/main_page/base.html:81
+msgid "Покерные расчёты"
+msgstr "Poker calculations"
+
+#: main_page/templates/main_page/base.html:82
+msgid "Рейкбэк"
+msgstr "Rakeback"
+
+#: main_page/templates/main_page/base.html:83
+msgid "Новости"
+msgstr "News"
+
+#: main_page/templates/main_page/base.html:87
+msgid "Лучшие румы"
+msgstr "Best poker rooms and apps"
+
+#: main_page/templates/main_page/base.html:96
+msgid "Полезное о покере"
+msgstr "Useful information"
+
+#: main_page/templates/main_page/base.html:97
+msgid "Список покерных мошенников"
+msgstr "List of poker scammers"
+
+#: main_page/templates/main_page/base.html:98
+msgid "Список надёжных клубов"
+msgstr "List of reliable clubs"
+
+#: main_page/templates/main_page/base.html:99
+msgid "Бонусы покер-румов"
+msgstr "Poker Room Bonuses"
+
+#: main_page/templates/main_page/base.html:100
+msgid "Где начать играть"
+msgstr "Where to start playing poker"
+
+#: main_page/templates/main_page/base.html:107
+#, fuzzy
+#| msgid "Главная"
+msgid "главная"
+msgstr "Home"
+
+#: main_page/templates/main_page/base.html:112
+msgid "черный список"
+msgstr "black list"
+
+#: main_page/templates/main_page/base.html:117
+msgid "обучение"
+msgstr "learn"
+
+#: main_page/templates/main_page/base.html:122
+msgid "о нас"
+msgstr "about us"
+
+#: main_page/templates/main_page/base.html:210
+msgid ""
+"Игры на деньги могут вызывать игровую зависимость. Относитесь к покеру, как "
+"к досугу, а не источнику дохода. Контролируйте расходы и придерживайтесь "
+"принципов Ответственной игры. Если замечаете признаки зависимости, "
+"обратитесь за помощью к специалистам."
+msgstr ""
+"Playing games with money can cause gambling addiction. It is important to "
+"treat poker as a leisure activity,not a source of income. Control your "
+"spending and follow the principles of responsible gaming. If you notice "
+"signs ofaddiction, seek help from specialists"
+
+#: main_page/templates/main_page/lists.html:85
+msgid "Белый список"
+msgstr "White list"
+
+#: main_page/templates/main_page/lists.html:87
+msgid ""
+"Мы поможем с решением любых вопросов возникших с клубами из белого списка. "
+"Данный список создан с целью помочь игрокам столкнувшимся с отсутствием "
+"коммуникации с клубами или мошенничеством со стороны агентов работающих с "
+"клубами из списка."
+msgstr ""
+"We will assist you in resolving any issues that may arise with clubs from "
+"our white list. This list has beencreated to help players who experience "
+"communication difficulties with clubs or fraudulent behavior on the part "
+"ofagents who work with clubs on the list."
+
+#: main_page/templates/main_page/lists.html:119
+msgid ""
+"Клубы, агенты, контакты добавленные в чёрный список по нашему мнению несут "
+"вред индустрии и мы считаем нашим долгом предупредить игроков и коллег о "
+"опасности. Если вы столкнулись с нечестным поведением со стороны "
+"представителей индустрии вы можете связать с нами, при наличии достаточных "
+"доказательств они попадут в публичный чёрный список."
+msgstr "Clubs, agents, and contacts added to the \
+blacklist are, in our opinion, harmful to the industry. We consider it our duty to warn players and colleagues about\
+ this danger. If you encounter dishonest behavior from industry representatives, please contact us. If there is \
+ sufficient evidence, we will place them on a public blacklist."
+
+#: main_page/templates/main_page/lists.html:166
+#: main_page/templates/main_page/main.html:193
+msgid "Остались вопросы?"
+msgstr "Do you have any other questions?"
+
+#: main_page/templates/main_page/lists.html:167
+msgid "Напишите нам, поможем сделать выбор и предложим лучшие условия"
+msgstr "Write to us, we will help you choose and offer the best conditions."
+
+#: main_page/templates/main_page/main.html:12
+msgid "Почему нас выбирают?"
+msgstr "Why Choose Us?"
+
+#: main_page/templates/main_page/main.html:13
+msgid "Надёжность"
+msgstr "Reliability"
+
+#: main_page/templates/main_page/main.html:14
+msgid "Лучшие сделки"
+msgstr "Best deals"
+
+#: main_page/templates/main_page/main.html:15
+msgid "Индивидуальный подход"
+msgstr "Individual approach"
+
+#: main_page/templates/main_page/main.html:16
+msgid "Обучение-тренировка"
+msgstr "Training"
+
+#: main_page/templates/main_page/main.html:17
+msgid "Компетентность"
+msgstr "Competence"
+
+#: main_page/templates/main_page/main.html:96
+msgid "Наши услуги"
+msgstr "What services we provide"
+
+#: main_page/templates/main_page/main.html:99
+msgid "Доступ в крупные, приватные и эксклюзивные клубы, союзы, румы."
+msgstr "Access to large, private and exclusive clubs, unions, and rooms."
+
+#: main_page/templates/main_page/main.html:100
+msgid ""
+"Не знаешь где начать играть? Пиши мы подберём место индивидуально для тебя."
+msgstr ""
+"Undecided where to start playing? Write to us and we will choose a place "
+"individually for you."
+
+#: main_page/templates/main_page/main.html:101
+msgid "Обучение для новичков в индустрии. Создай с нами свой покерный клуб."
+msgstr ""
+"Training for beginners in the industry. Create your own poker club with us."
+
+#: main_page/templates/main_page/main.html:102
+msgid ""
+"Если у игрока возникают проблемы с покер-румом или клубом мы прикладываем "
+"все усилия для их решения."
+msgstr ""
+"If a player has problems with a poker room or a club, we make every effort "
+"to solve them."
+
+#: main_page/templates/main_page/main.html:103
+msgid ""
+"Мы поможем разобраться в любом спорном вопросе с покерными клубами из нашего "
+"белого списка в независимости от того через кого вы играли"
+msgstr ""
+"We will help you sort out any controversial issue with poker clubs from our "
+"white list, regardless of who you played through"
+
+#: main_page/templates/main_page/main.html:107
+msgid "Чёрный список клубов"
+msgstr "Black list"
+
+#: main_page/templates/main_page/main.html:111
+msgid "Белый список клубов"
+msgstr "White list"
+
+#: main_page/templates/main_page/main.html:123
+msgid ""
+"Наша команда работает более 10 лет в сфере онлайн покера, мобильных покерных "
+"приложений и покерных сетей. Обеспечиваем нашим игрокам и партнёрам высокий "
+"уровень сервиса. Быстрая и надёжная поддержка гарантирует удобство игры."
+msgstr ""
+"Our team has been working for more than 10 years in the field of online "
+"poker, mobile poker applications andpoker networks. We provide our players "
+"and partners with a high level of service. Fast and reliable support "
+"guaranteesthe convenience of the game."
+
+#: main_page/templates/main_page/main.html:128
+msgid ""
+"Отслеживая актуальные тенденции в мире онлайн покера, мы предлагаем самые "
+"выгодные условия и высокий доход. Так же, у нас вы можете найти большое "
+"количество приватных клубов, с превосходным полем."
+msgstr ""
+"y keeping up with current trends in the world of online poker, we can be the "
+"first to know about importantnews and developments. We can help you make "
+"informed decisions about where to go next in the industry and provideyou "
+"with the best possible conditions and highest possible income."
+
+#: main_page/templates/main_page/main.html:133
+msgid ""
+"Персональный подход к каждому игроку. Помощь для новичков и раскрытие "
+"тонкостей индустрии для профессионалов, которые помогут увеличить доход"
+msgstr ""
+"A personalized approach to each client. Assistance for beginners and a "
+"deeper understanding of the industry'scomplexities for professionals, which "
+"will help increase their earnings."
+
+#: main_page/templates/main_page/main.html:143
+msgid "Сети, румы и приложения"
+msgstr "Networks, rooms and applications"
+
+#: main_page/templates/main_page/main.html:194
+msgid ""
+"Свяжись с нами любым удобным способом и начни зарабатывать вместе с нами"
+msgstr ""
+"Write to us, we will help you make a choice and offer the best conditions"

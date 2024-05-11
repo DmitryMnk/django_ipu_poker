@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'base_css/normalize.css' %} ">
     <link rel="stylesheet" href="{% static 'base_css/fonts.css' %}">
+    <link rel="icon" href="{% static 'img/1920/favicon.ico' %}">
     <link rel="stylesheet" href="{% static 'package/swiper-bundle.min.css' %}" />
     <link rel="stylesheet" href="{% static '/base_css/style.css' %}">
     <link rel="stylesheet" href="{% static 'base_css/media.css' %}">
@@ -19,37 +20,37 @@
 <body>
     <div class="container">
         <header class="header">
-            <form class="header__language-switch" action="{% url 'set_language' %}" method="post">{% csrf_token %}
+            <form class="header__language-switch" action="{% url 'set_language' %}" method="post">
+                {% csrf_token %}
                 <input name="next" type="hidden" value="{{ redirect_to }}">
-                <select class="header__language-select"  name="language">
-                    {% get_current_language as LANGUAGE_CODE %}
-                    {% get_available_languages as LANGUAGES %}
-                    {% get_language_info_list for LANGUAGES as languages %}
-                    {% for language in languages %}
-                        <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
-                            {{ language.name_local }} ({{ language.code }})
-                        </option>
-                    {% endfor %}
-                </select>
-                <button type="submit" class="header__language-button reset-button">Сменить</button>
+                {% get_current_language as LANGUAGE_CODE %}
+                {% get_available_languages as LANGUAGES %}
+                {% get_language_info_list for LANGUAGES as languages %}
+                {% for language in languages %}
+                    {% if not language.code ==  LANGUAGE_CODE%}
+                        <input name="language" type="hidden" value="{{ language.code }}">
+                        <button class="header__language-button reset-button" type="submit">{{ language.code }}</button>
+                    {% endif %}
+                {% endfor %}
+            
             </form>
 
             <nav class="header__nav">
                 <ul class="header__nav-list reset-list">
                     <li class="header__nav-list-item">
-                        <a href="{% url 'main' %}" class="header__nav-link reset-link">Главная</a>
+                        <a href="{% url 'main' %}" class="header__nav-link reset-link">{% translate "Главная" %}</a>
                     </li>
                     <li class="header__nav-list-item">
-                        <a href="{% url 'lists' %}" class="header__nav-link reset-link">Чёрный лист</a>
+                        <a href="{% url 'lists' %}" class="header__nav-link reset-link">{% translate "Чёрный список" %}</a>
                     </li>
                     <li class="header__nav-list-item">
-                        <a href="{% url 'main' %}#contacts" class="header__nav-link reset-link">Обучение</a>
+                        <a href="{% url 'main' %}#contacts" class="header__nav-link reset-link">{% translate "Обучение" %}</a>
                     </li>
                     <li class="header__nav-list-item">
-                        <a href="{% url 'main' %}#about" class="header__nav-link reset-link">О нас</a>
+                        <a href="{% url 'main' %}#about" class="header__nav-link reset-link">{% translate "О нас" %}</a>
                     </li>
                     <li class="header__nav-list-item">
-                        <a href="{% url 'main' %}#contacts" class="header__nav-link reset-link">Контакты</a>
+                        <a href="{% url 'main' %}#contacts" class="header__nav-link reset-link">{% translate "Контакты" %}</a>
                     </li>
                 </ul>
             </nav>
@@ -67,24 +68,24 @@
             <div class="container">
                 <div class="footer__top">
                     <div class="footer__top-block">
-                        <h3 class="footer__top-block-title reset-text">Игрокам</h3>
-                        <a href="{% url 'main' %}#contacts" class="footer__top-block-link reset-link">Лучшие покерные приложения</a>
-                        <a href="{% url 'main' %}#contacts" class="footer__top-block-link reset-link">Подборка клубов</a>
-                        <a href="{% url 'main' %}#contacts" class="footer__top-block-link reset-link">Где скачать покер</a>
-                        <a href="{% url 'main' %}#contacts" class="footer__top-block-link reset-link">Программы для покера</a>
+                        <h3 class="footer__top-block-title reset-text">{% translate "Игрокам" %}</h3>
+                        <a href="{% url 'main' %}#contacts" class="footer__top-block-link reset-link">{% translate "Лучшие покерные приложения" %}</a>
+                        <a href="{% url 'main' %}#contacts" class="footer__top-block-link reset-link">{% translate "Подборка клубов" %}</a>
+                        <a href="{% url 'main' %}#contacts" class="footer__top-block-link reset-link">{% translate "Где скачать покер" %}</a>
+                        <a href="{% url 'main' %}#contacts" class="footer__top-block-link reset-link">{% translate "Программы для покера" %}</a>
                     </div>
 
                     <div class="footer__top-block">
-                        <h3 class="footer__top-block-title reset-text">Обучение</h3>
-                        <a href="{% url 'main' %}#contacts" class="footer__top-block-link reset-link">Как создать покерный клуб</a>
-                        <a href="{% url 'main' %}#contacts" class="footer__top-block-link reset-link">Выбор приложения</a>
-                        <a href="{% url 'main' %}#contacts" class="footer__top-block-link reset-link">Покерные расчёты</a>
-                        <a href="{% url 'main' %}#contacts" class="footer__top-block-link reset-link">Рейкбэк</a>
-                        <a href="{% url 'main' %}#contacts" class="footer__top-block-link reset-link">Новости</a>
+                        <h3 class="footer__top-block-title reset-text">{% translate "Обучение" %}</h3>
+                        <a href="{% url 'main' %}#contacts" class="footer__top-block-link reset-link">{% translate "Как создать покерный клуб" %}</a>
+                        <a href="{% url 'main' %}#contacts" class="footer__top-block-link reset-link">{% translate "Выбор приложения" %}</a>
+                        <a href="{% url 'main' %}#contacts" class="footer__top-block-link reset-link">{% translate "Покерные расчёты" %}</a>
+                        <a href="{% url 'main' %}#contacts" class="footer__top-block-link reset-link">{% translate "Рейкбэк" %}</a>
+                        <a href="{% url 'main' %}#contacts" class="footer__top-block-link reset-link">{% translate "Новости" %}</a>
                     </div>
 
                     <div class="footer__top-block">
-                        <h3 class="footer__top-block-title reset-text">Лучшие румы</h3>
+                        <h3 class="footer__top-block-title reset-text">{% translate "Лучшие румы" %}</h3>
                         <a href="{% url 'main' %}#contacts" class="footer__top-block-link reset-link">PPPoker</a>
                         <a href="{% url 'main' %}#contacts" class="footer__top-block-link reset-link">PokerBros</a>
                         <a href="{% url 'main' %}#contacts" class="footer__top-block-link reset-link">iPoker</a>
@@ -93,38 +94,38 @@
                     </div>
 
                     <div class="footer__top-block">
-                        <h3 class="footer__top-block-title reset-text">Полезное о покере</h3>
-                        <a href="{% url 'lists' %}#black-list" class="footer__top-block-link reset-link">Список покерных мошенников</a>
-                        <a href="{% url 'lists' %}#white-list" class="footer__top-block-link reset-link">Список надёжных клубов</a>
-                        <a href="{% url 'main' %}#contacts" class="footer__top-block-link reset-link">Бонусы покер-румов</a>
-                        <a href="{% url 'main' %}#contacts" class="footer__top-block-link reset-link"> Где начать играть </a>
+                        <h3 class="footer__top-block-title reset-text">{% translate "Полезное о покере" %}</h3>
+                        <a href="{% url 'lists' %}#black-list" class="footer__top-block-link reset-link">{% translate "Список покерных мошенников" %}</a>
+                        <a href="{% url 'lists' %}#white-list" class="footer__top-block-link reset-link">{% translate "Список надёжных клубов" %}</a>
+                        <a href="{% url 'main' %}#contacts" class="footer__top-block-link reset-link">{% translate "Бонусы покер-румов" %}</a>
+                        <a href="{% url 'main' %}#contacts" class="footer__top-block-link reset-link">{% translate "Где начать играть" %}  </a>
                     </div>
                 </div>
                 <nav class="footer__nav">
                     <ul class="footer__nav-list reset-list">
                         <li class="footer__nav-list-item">
                             <a href="{% url 'main' %}" class="footer__nav-list-link reset-link">
-                                главная
+                                {% translate "главная" %}
                             </a>
                         </li>
                         <li class="footer__nav-list-item">
                             <a href="{% url 'lists' %}" class="footer__nav-list-link reset-link">
-                                черный лист
+                                {% translate "черный список" %}
                             </a>
                         </li>
                         <li class="footer__nav-list-item">
                             <a href="{% url 'main' %}#contacts" class="footer__nav-list-link reset-link">
-                                обучение
+                                {% translate "обучение" %}
                             </a>
                         </li>
                         <li class="footer__nav-list-item">
                             <a href="{% url 'main' %}#about" class="footer__nav-list-link reset-link">
-                                о нас
+                                {% translate "о нас" %}
                             </a>
                         </li>
                         <li class="footer__nav-list-item">
                             <a href="{% url 'main' %}#contacts" class="footer__nav-list-link reset-link">
-                                Контакты
+                                {% translate "Контакты" %}
                             </a>
                         </li>
                     </ul>
@@ -207,7 +208,7 @@
                 <div class="footer__bottom">
                     <div class="footer__bottom-left">
                         <p class="footer__botom-text text-reset">
-                            Игры на деньги могут вызывать игровую зависимость. Относитесь к покеру, как к досугу, а не источнику дохода. Контролируйте расходы и придерживайтесь принципов Ответственной игры. Если замечаете признаки зависимости, обратитесь за помощью к специалистам.
+                            {% translate "Игры на деньги могут вызывать игровую зависимость. Относитесь к покеру, как к досугу, а не источнику дохода. Контролируйте расходы и придерживайтесь принципов Ответственной игры. Если замечаете признаки зависимости, обратитесь за помощью к специалистам." %}
                         </p>
                     </div>
                     <div class="footer__bottom-right">

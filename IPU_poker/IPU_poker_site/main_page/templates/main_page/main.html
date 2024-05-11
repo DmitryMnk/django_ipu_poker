@@ -1,5 +1,6 @@
 {% extends 'main_page/base.html' %}
 {% load static %}
+{% load i18n %}
 <head>
     <title>{{ title }}</title>
 </head>
@@ -8,12 +9,12 @@
         <main>
             <section class="banner">
                 <div class="banner__text-content">
-                    <h2 class="banner__title reset-text">Почему нас выбирают?</h2>
-                    <div class="banner__text-line banner_back_1">Надёжность</div>
-                    <div class="banner__text-line banner_back_2">Лучшие сделки</div>
-                    <div class="banner__text-line banner_back_3">Индивидуальный подход</div>
-                    <div class="banner__text-line banner_back_4">Обучение</div>
-                    <div class="banner__text-line banner_back_5">Компетентность</div>
+                    <h2 class="banner__title reset-text">{% translate "Почему нас выбирают?" %}</h2>
+                    <div class="banner__text-line banner_back_1">{% translate "Надёжность" %}</div>
+                    <div class="banner__text-line banner_back_2">{% translate "Лучшие сделки" %}</div>
+                    <div class="banner__text-line banner_back_3">{% translate "Индивидуальный подход" %}</div>
+                    <div class="banner__text-line banner_back_4">{% translate "Обучение-тренировка" %}</div>
+                    <div class="banner__text-line banner_back_5">{% translate "Компетентность" %}</div>
                 </div>
 
                 <ul class="banner__socials-list reset-list">
@@ -92,22 +93,22 @@
             </section>
 
             <section class="services">
-                <h2 class="services__title section-title reset-text">Наши услуги</h2>
+                <h2 class="services__title section-title reset-text">{% translate "Наши услуги" %}</h2>
 
                 <div class="services__text-list">
-                    <p class="services__text-list-item reset-text">Доступ в крупные, приватные и эксклюзивные клубы, союзы, румы.</p>
-                    <p class="services__text-list-item reset-text">Не знаешь где начать играть? Пиши мы подберём место индивидуально для тебя.</p>
-                    <p class="services__text-list-item reset-text">Обучение для новичков в индустрии. Создай с нами свой покерный клуб.</p>
-                    <p class="services__text-list-item reset-text">Если у игрока возникают проблемы с покер-румом или клубом мы прикладываем все усилия для их решения.</p>
-                    <p class="services__text-list-item reset-text">Мы поможем разобраться в любом спорном вопросе с покерными клубами из нашего белого списка в независимости от того через кого вы играли</p>
+                    <p class="services__text-list-item reset-text">{% translate "Доступ в крупные, приватные и эксклюзивные клубы, союзы, румы." %}</p>
+                    <p class="services__text-list-item reset-text">{% translate "Не знаешь где начать играть? Пиши мы подберём место индивидуально для тебя." %}</p>
+                    <p class="services__text-list-item reset-text">{% translate "Обучение для новичков в индустрии. Создай с нами свой покерный клуб." %}</p>
+                    <p class="services__text-list-item reset-text">{% translate "Если у игрока возникают проблемы с покер-румом или клубом мы прикладываем все усилия для их решения." %}</p>
+                    <p class="services__text-list-item reset-text">{% translate "Мы поможем разобраться в любом спорном вопросе с покерными клубами из нашего белого списка в независимости от того через кого вы играли" %}</p>
                 </div>
                 <div class="services__buttons">
                     <a href="lists.html#black-list" class="services__item reset-link black-list-button">
-                        Чёрный список клубов
+                        {% translate "Чёрный список клубов" %}
                     </a>
 
                     <a href="lists.html#white-list" class="services__item reset-link white-list-button">
-                        Белый список клубов
+                        {% translate "Белый список клубов" %}
                     </a>
                 </div>
 
@@ -115,20 +116,21 @@
 
             <section id="about" class="about">
                 <h2 class="about__title section-title reset-text">
-                    О нас
+                    {% translate "О нас" %}
                 </h2>
                 <div class="about__bottom-block cont-bottom-first">
                     <p class="about__bottom-text reset-text">
-                        Наша команда работает более 10 лет в сфере онлайн покера, мобильных покерных приложений и покерных сетей. Обеспечиваем нашим игрокам и партнёрам высокий уровень сервиса. Быстрая и надёжная поддержка гарантирует удобство игры.                    </p>
+                        {% translate "Наша команда работает более 10 лет в сфере онлайн покера, мобильных покерных приложений и покерных сетей. Обеспечиваем нашим игрокам и партнёрам высокий уровень сервиса. Быстрая и надёжная поддержка гарантирует удобство игры." %}
+                    </p>
                 </div>
                 <div class="about__bottom-block cont-bottom-second">
                     <p class="about__bottom-text reset-text">
-                        Отслеживая актуальные тенденции в мире онлайн покера, мы предлагаем самые выгодные условия и высокий доход. Так же, у нас вы можете найти большое количество приватных клубов, с превосходным полем.
+                        {% translate "Отслеживая актуальные тенденции в мире онлайн покера, мы предлагаем самые выгодные условия и высокий доход. Так же, у нас вы можете найти большое количество приватных клубов, с превосходным полем." %}
                     </p>
                 </div>
                 <div class="about__bottom-block cont-bottom-third">
                     <p class="about__bottom-text reset-text">
-                        Персональный подход к каждому игроку. Помощь для новичков и раскрытие тонкостей индустрии для профессионалов, которые помогут увеличить доход
+                        {% translate "Персональный подход к каждому игроку. Помощь для новичков и раскрытие тонкостей индустрии для профессионалов, которые помогут увеличить доход" %}
                     </p>
                 </div>
             </section>
@@ -138,7 +140,7 @@
             </section>
 
             <section class="swiper">
-                <h2 class="swiper__title section-title">Сети, румы и приложения</h2>
+                <h2 class="swiper__title section-title">{% translate "Сети, румы и приложения" %}</h2>
                 <p class="swiper__annotation"></p>
                 <div class="swiper__swiper swiper">
                     <div class="conveyor__wrapper swiper-wrapper">
@@ -188,8 +190,8 @@
             </section>
 
             <section id="contacts" class="contacts">
-                <h2 class="contacts__title section-title reset-text">Остались вопросы?</h2>
-                <h3 class="contacts__subtitle reset-text">Свяжись с нами любым удобным способом и начни зарабатывать вместе с нами</h3>
+                <h2 class="contacts__title section-title reset-text">{% translate "Остались вопросы?" %}</h2>
+                <h3 class="contacts__subtitle reset-text">{% translate "Свяжись с нами любым удобным способом и начни зарабатывать вместе с нами" %}</h3>
                 <div class="contacts__info">
                     <a href="" class="contacts__info-item reset-link contacts-telegram">
                         <p class="contacts__info-item-content reset-text">@IPU_Manager</p>
