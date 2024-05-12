@@ -3,12 +3,14 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'base_css/normalize.css' %}">
     <link rel="stylesheet" href="{% static 'base_css/fonts.css' %}">
     <link rel="icon" href="{% static 'img/1920/favicon.ico' %}">
     <link rel="stylesheet" href="{% static 'base_css/style.css' %}">
     <link rel="stylesheet" href="{% static 'base_css/admin.css' %}">
     <link rel="stylesheet" href="{% static 'base_css/media.css' %}">
+    <script src="{% static 'base_js/main.js' %}" type="module" defer></script>
     <script src="{% static 'base_js/admin.js' %}" type="module" defer ></script>
     <title>{{ title }}</title>
 </head>
@@ -33,6 +35,11 @@
                     </li>
                 </ul>
             </nav>
+            <button class="header__burger admin-burger reset-button">
+                <span class="header__burger-button-line burger-line-first"></span>
+                <span class="header__burger-button-line burger-line-second"></span>
+                <span class="header__burger-button-line burger-line-third"></span>
+            </button>
         </header>
     </div>
     {% block body %}

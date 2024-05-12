@@ -168,8 +168,9 @@
     }
 
 
-    .tables__item {
+    .tables__item-block {
         overflow: scroll;
+        padding-bottom: 20px;
     }
 
     .tables__list-item div{

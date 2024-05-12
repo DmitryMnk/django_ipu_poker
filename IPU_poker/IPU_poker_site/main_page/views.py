@@ -27,12 +27,22 @@ class TablesView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        w_headers, b_headers, b_rows, w_rows = get_table()
-        context.update({
-            'title': 'Черный список',
-            'w_headers': w_headers,
-            'b_headers': b_headers,
-            'w_rows': w_rows,
-            'b_rows': b_rows
-        })
-        return context
+        try:
+            w_headers, b_headers, b_rows, w_rows = get_table()
+            context.update({
+                'title': 'Черный список',
+                'w_headers': w_headers,
+                'b_headers': b_headers,
+                'w_rows': w_rows,
+                'b_rows': b_rows
+            })
+            return context
+        except Exception as e:
+            context.update({
+                'title': 'Черный список',
+                'w_headers': False,
+                'b_headers': False,
+                'w_rows': False,
+                'b_rows': False
+            })
+            return context

@@ -85,29 +85,49 @@
                         <h3 class="tables__item-title section-title">{% translate "Белый список" %}</h3>
                     </div>
                     <h4 class="tables__info reset-text">{% translate "Мы поможем с решением любых вопросов возникших с клубами из белого списка. Данный список создан с целью помочь игрокам столкнувшимся с отсутствием коммуникации с клубами или мошенничеством со стороны агентов работающих с клубами из списка." %}</h4>
-
-                    <ul class="tables__list reset-list">
-                        <li class="tables__list-item first-table-list-item">
-                            {% for head in w_headers %}
-                                <div class="tables__list-item-block-white w-list-card">
-                                    {{ head.name }}
-                                </div>
-                            {% endfor %}
-                        </li>
-                        {% for row in w_rows %}
-                            <li class="tables__list-item">
-                                <div class="tables__list-item-block-white w-list-card">
-                                    {{ row.col_1 }}
-                                </div>
-                                <div class="tables__list-item-block-white w-list-card">
-                                    {{ row.col_2 }}
-                                </div>
-                                <div class="tables__list-item-block-white w-list-card">
-                                    {{ row.col_3 }}
-                                </div>
-                            </li>
-                        {% endfor %}
-                    </ul>
+                    {% if  w_headers and w_rows %}
+                        <div class="tables__item-block">
+                    
+                            <ul class="tables__list reset-list">
+                                <li class="tables__list-item first-table-list-item">
+                                    {% for head in w_headers %}
+                                        <div class="tables__list-item-block-white w-list-card">
+                                            {{ head.name }}
+                                        </div>
+                                    {% endfor %}
+                                </li>
+                                {% for row in w_rows %}
+                                    <li class="tables__list-item">
+                                        <div class="tables__list-item-block-white w-list-card">
+                                            {% if row.col_1 == None %}
+                                            
+                                            {% else %}
+                                                {{ row.col_1 }}
+                                            {% endif %}
+                                        </div>
+                                        <div class="tables__list-item-block-white w-list-card">
+                                            {% if row.col_2 == None %}
+                                            
+                                            {% else %}
+                                                {{ row.col_2 }}
+                                            {% endif %}
+                                        </div>
+                                        <div class="tables__list-item-block-white w-list-card">
+                                            {% if row.col_3 == None %}
+                                            
+                                            {% else %}
+                                                {{ row.col_3 }}
+                                            {% endif %}
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>    
+                        {% else %}
+                            <h4 class="tables__info reset-text">Что-то пошло не так. Поробуйте обновить страницу</h4>
+                        {% endif %}
+                    
+                    
                 </div>
                 
                 <div id="black-list" class="tables__item">
@@ -119,46 +139,66 @@
                         {% translate "Клубы, агенты, контакты добавленные в чёрный список по нашему мнению несут вред индустрии и мы считаем нашим долгом предупредить игроков и коллег о опасности. Если вы столкнулись с нечестным поведением со стороны представителей индустрии вы можете связать с нами, при наличии достаточных доказательств они попадут в публичный чёрный список." %}
                         
                     </h4>
-
-                    <ul class="tables__list reset-list">
-                        <li class="tables__list-item first-table-list-item">
-                            {% for head in b_headers %}
-                                <div class="tables__list-item-block">
-                                    {{ head.name }}
-                                </div>
-                            {% endfor %}
-                        </li>
-                        {% for row in b_rows %}
-                            <li class="tables__list-item">
-                                <div class="tables__list-item-block">
-                                    {{ row.col_1 }}
-                                </div>
-                                <div class="tables__list-item-block">
-                                    {{ row.col_2 }}
-                                </div>
-                                <div class="tables__list-item-block">
-                                    {{ row.col_3 }}
-                                </div>
-                                <div class="tables__list-item-block">
-                                    {% if row.col_4 == None %}
-                                    
-                                    {% else %}
-                                        {{ row.col_4 }}
-                                    {% endif %}
-                                </div>
-                                <div class="tables__list-item-block">
-                                    {{ row.col_5 }}
-                                </div>
-                                <div class="tables__list-item-block">
-                                    {% if row.col_6 == None %}
-                                    
-                                    {% else %}
-                                        {{ row.col_6 }}
-                                    {% endif %}
-                                </div>
-                            </li>
-                        {% endfor %}
-                    </ul>
+                    {% if  b_headers and b_rows %}
+                        <div class="tables__item-block">
+                        <ul class="tables__list reset-list">
+                                <li class="tables__list-item first-table-list-item">
+                                    {% for head in b_headers %}
+                                        <div class="tables__list-item-block">
+                                            {{ head.name }}
+                                        </div>
+                                    {% endfor %}
+                                </li>
+                                {% for row in b_rows %}
+                                    <li class="tables__list-item">
+                                        <div class="tables__list-item-block">
+                                            {% if row.col_1 == None %}
+                                            
+                                            {% else %}
+                                                {{ row.col_1 }}
+                                            {% endif %}
+                                        </div>
+                                        <div class="tables__list-item-block">
+                                            {% if row.col_2 == None %}
+                                            
+                                            {% else %}
+                                                {{ row.col_2 }}
+                                            {% endif %}
+                                        </div>
+                                        <div class="tables__list-item-block">
+                                            {% if row.col_3 == None %}
+                                            
+                                            {% else %}
+                                                {{ row.col_3 }}
+                                            {% endif %}
+                                        </div>
+                                        <div class="tables__list-item-block">
+                                            {% if row.col_4 == None %}
+                                            
+                                            {% else %}
+                                                {{ row.col_4 }}
+                                            {% endif %}
+                                        </div>
+                                        <div class="tables__list-item-block">
+                                            {% if row.col_5 == None %}
+                                            
+                                            {% else %}
+                                                {{ row.col_5 }}
+                                            {% endif %}
+                                        </div>
+                                        <div class="tables__list-item-block">
+                                            {% if row.col_6 == None %}
+                                            
+                                            {% else %}
+                                                {{ row.col_6 }}
+                                            {% endif %}
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                            </ul> 
+                        </div>
+                    {% endif %}
+                    
                 </div>
             </section>
 
