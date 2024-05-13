@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-bgkik=iaexc809o_a2$)fyaqn5nuf&6g$@nau59_-5hjc2$#ip
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['ipokerunion.com','www.ipokerunion.com', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['ipokerunion.com', 'www.ipokerunion.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -57,7 +57,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'IPU_poker_site.urls'
 
-TEMPLATES = [git
+TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [],
@@ -78,17 +78,22 @@ WSGI_APPLICATION = 'IPU_poker_site.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'ce69588_ipu',
-        'USER': 'ce69588_ipu',
-        'PASSWORD': 'd5WysMi8',
-        'HOST': 'localhost',
-        'PORT': 3306
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'ce69588_ipu',
+#         'USER': 'ce69588_ipu',
+#         'PASSWORD': 'd5WysMi8',
+#         'HOST': 'localhost',
+#         'PORT': 3306
+#     }
+# }
 
 
 # Password validation
@@ -135,10 +140,8 @@ LANGUAGES = (
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
-STATICFILES_DIRS = [
-   os.path.join(BASE_DIR, "static_dev"),
-]
+STATIC_ROOT = 'static'
+STATICFILES_DIRS = []
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 

@@ -102,6 +102,16 @@
     .header-nav--active {
         transform: translateY(0px);
     }
+
+    .tables__item-block {
+        overflow: scroll;
+        padding-bottom: 20px;
+    }
+
+    .modal-wrapper {
+        min-width: auto;
+        min-height: auto;
+    }
 }
 
 @media (max-width: 768px) {
@@ -165,12 +175,6 @@
         font-size: 20px;
         margin-bottom: 20px;
         
-    }
-
-
-    .tables__item-block {
-        overflow: scroll;
-        padding-bottom: 20px;
     }
 
     .tables__list-item div{
