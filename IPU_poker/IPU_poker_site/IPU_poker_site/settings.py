@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-bgkik=iaexc809o_a2$)fyaqn5nuf&6g$@nau59_-5hjc2$#ip'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['ipokerunion.com','www.ipokerunion.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -57,7 +57,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'IPU_poker_site.urls'
 
-TEMPLATES = [
+TEMPLATES = [git
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [],
@@ -81,8 +81,12 @@ WSGI_APPLICATION = 'IPU_poker_site.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'ce69588_ipu',
+        'USER': 'ce69588_ipu',
+        'PASSWORD': 'd5WysMi8',
+        'HOST': 'localhost',
+        'PORT': 3306
     }
 }
 
