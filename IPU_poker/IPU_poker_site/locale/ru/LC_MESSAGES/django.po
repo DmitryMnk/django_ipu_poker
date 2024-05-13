@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-12 08:58+0000\n"
+"POT-Creation-Date: 2024-05-13 12:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,7 +33,7 @@ msgid "Главная"
 msgstr "Главная"
 
 #: main_page/templates/main_page/base.html:44
-#: main_page/templates/main_page/lists.html:129
+#: main_page/templates/main_page/lists.html:130
 msgid "Чёрный список"
 msgstr ""
 
@@ -157,7 +157,7 @@ msgid ""
 "клубами из списка."
 msgstr ""
 
-#: main_page/templates/main_page/lists.html:133
+#: main_page/templates/main_page/lists.html:134
 msgid ""
 "Клубы, агенты, контакты добавленные в чёрный список по нашему мнению несут "
 "вред индустрии и мы считаем нашим долгом предупредить игроков и коллег о "
@@ -167,11 +167,17 @@ msgid ""
 msgstr ""
 
 #: main_page/templates/main_page/lists.html:198
+msgid ""
+"Произошла ошибка на сервере. Попробуйте перезагрузить страницу или зайти "
+"позже. Приносим свои извинения за неудобства."
+msgstr ""
+
+#: main_page/templates/main_page/lists.html:202
 #: main_page/templates/main_page/main.html:193
 msgid "Остались вопросы?"
 msgstr ""
 
-#: main_page/templates/main_page/lists.html:199
+#: main_page/templates/main_page/lists.html:203
 msgid "Напишите нам, поможем сделать выбор и предложим лучшие условия"
 msgstr ""
 

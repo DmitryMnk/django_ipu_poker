@@ -839,7 +839,7 @@ body {
 
 .tables__list {
     display: flex;
-    min-width: 750px;
+    min-width: 872px;
     flex-direction: column;
     border: 2px solid #3c3c3c;
     border-bottom: 4px solid #3c3c3c;
@@ -883,8 +883,16 @@ body {
     position: relative;
 }
 
+.tables__list-item:nth-child(2n) {
+    background-color: #232323;
+}
+
 .tables__list-item:not(:last-child) {
     border-bottom: 1px solid #3c3c3c;
+}
+
+.tables__list-item:last-child {
+    border-radius: 0px 0px 20px 20px;
 }
 
 
@@ -892,7 +900,7 @@ body {
     padding: 10px;
     width: calc(100% / 6);
     min-height: 80px;
-    font-size: 20px;
+    font-size: 15px;
     padding: 5px;
     display: flex;
     justify-content: center;
@@ -1014,4 +1022,173 @@ body {
 
 #tr-popup {
     display: none;
+}
+
+/* MODAL */
+
+.modal {
+    z-index: 2;
+    position: fixed;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    min-width: 100vw;
+    width: 100%;
+    min-height: 100vh;
+    height: 100%;
+    background-color: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    top: 0;
+    left: 0;
+    transition: opacity 200ms ease-in-out;
+}
+
+.modal-wrapper {
+    padding: 100px 50px;
+    background-color: rgba(0,0,0,0.8);
+    border: 1px solid #707070;   
+    border-radius: 15px;
+    position: relative;
+}
+
+.modal-title {
+    font-size: 20px;
+    color: #b96900;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.modal-button {
+    cursor: pointer;
+    padding: 10px 20px;
+    font-size: 20px;
+    background-color: #3c3c3c;
+    color: #b96900;
+    font-weight: 600;
+    border-radius: 10px;
+    transition: color 200ms ease-in-out,
+                background-color 200ms ease-in-out,
+                transform 200ms ease-in-out,
+                box-shadow 200ms ease-in-out;
+}
+
+.modal-button:focus {
+    outline: 0;
+    box-shadow: 0px 0px 10px 1px rgba(255,255,255,1);
+}
+
+.modal-button:hover {
+    background-color: #d48b2c;
+    color: #000;
+}
+
+.modal-button:active {
+    background-color: #945707;
+    color: #000;
+
+}
+
+.modal-confirm {
+    margin-right: 20px;
+}
+
+.modal--active {
+    opacity: 1;
+}
+
+.modal-close-button {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    border: 1px solid black;
+    border-radius: 100%;
+    background-color: #000;
+    transition: box-shadow 200ms ease-in-out,
+                border 200ms ease-in-out,
+                background-color 200ms ease-in-out;
+}
+
+.modal-close-button:focus {
+    outline: none;
+    box-shadow: 0 0 10px 1px rgba(255,255,255,0.5), 0 0 10px 1px rgba(255,255,255,0.5) inset;
+}
+
+.modal-close-button-line {
+    position: absolute;
+    display: block;
+    width: 70%;
+    height: 1px;
+    background-color: #A48E7F;
+    transform-origin: center center;
+}
+
+.modal-close-button-first-line {
+    transform: rotate(45deg);
+}
+
+.modal-close-button-second-line {
+    transform: rotate(-45deg);
+}
+
+.modal-close-button:hover {
+    border: 1px solid #A48E7F;
+    box-shadow: 0 0 10px 1px rgba(255,255,255,0.5), 0 0 10px 1px rgba(255,255,255,0.5) inset;
+}
+
+.modal-link-list {
+    display: flex;
+}
+
+.modal-link-list-item:not(:last-child) {
+    margin-right: 20px;
+}
+
+.modal-link-social {
+    display: block;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: border-radius 200ms ease-in-out,
+                box-shadow 200ms ease-in-out,
+                transform 200ms ease-in-out;
+}
+
+.modal-link-telegram {
+    background-image: url('../img/modal-links/telegram.jpg');
+}
+
+.modal-link-skype {
+    background-image: url('../img/modal-links/skype.jpg');
+}
+
+.modal-link-whatsapp {
+    background-image: url('../img/modal-links/watsapp.jpg');
+}
+
+.modal-link-social:focus {
+    outline: none;
+    box-shadow: 0 0 10px 1px rgba(255,255,255,0.5), 0 0 10px 1px rgba(255,255,255,0.5) inset;
+}
+
+.modal-link-social:hover {
+    border-radius: 100%;
+    transform: scale(1.1);
+    box-shadow: 0 0 15px 2px rgba(255,255,255,0.7), 0 0 15px 2px rgba(255,255,255,0.7) inset;
+}
+
+.modal-link-social:active {
+    border-radius: 100%;
+    transform: scale(0.95);
+    box-shadow: 0 0 15px 2px rgba(255,255,255,0.7), 0 0 15px 2px rgba(255,255,255,0.7) inset;
 }

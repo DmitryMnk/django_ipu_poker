@@ -1,5 +1,11 @@
+from sqlite3 import OperationalError
+
+from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
+from django.template import RequestContext
 from django.views.generic import TemplateView
+from django.db import connection
+
 from .models import *
 
 
@@ -17,7 +23,7 @@ class MainView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context.update({
-            'title': ''
+            'title': 'Главная - ipokerunion'
         })
         return context
 
@@ -27,22 +33,23 @@ class TablesView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        title = 'Черный список - ipokerunion'
         try:
-            w_headers, b_headers, b_rows, w_rows = get_table()
+            if not connection.introspection.table_names():
+                raise OperationalError
+            else:
+                w_headers, b_headers, b_rows, w_rows = get_table()
+                context.update({
+                    'status': True,
+                    'title': title,
+                    'w_headers': w_headers,
+                    'b_headers': b_headers,
+                    'w_rows': w_rows,
+                    'b_rows': b_rows
+                })
+        except OperationalError as e:
             context.update({
-                'title': 'Черный список',
-                'w_headers': w_headers,
-                'b_headers': b_headers,
-                'w_rows': w_rows,
-                'b_rows': b_rows
+                'status': False,
+                'title': title,
             })
-            return context
-        except Exception as e:
-            context.update({
-                'title': 'Черный список',
-                'w_headers': False,
-                'b_headers': False,
-                'w_rows': False,
-                'b_rows': False
-            })
-            return context
+        return context
