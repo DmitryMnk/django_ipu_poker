@@ -1,4 +1,4 @@
-import { openModal, openModalLink } from "./functons.js";
+import {openModalLink} from "./functons.js";
 import Swiper from '../package/swiper-bundle.min.mjs'
 
 function toggle(burger, nav, animation) {
@@ -18,8 +18,39 @@ const swiperBlock = document.querySelector('.swiper__swiper');
 const headerBurgerButton = document.querySelector('.header__burger');
 const burgerNav = document.querySelector('.header__nav');
 const burgerNavLink = document.querySelectorAll('.header__nav-link');
+const preloader = document.querySelector('.preloader')
+const title = document.querySelector('title');
+const langButton = document.querySelector('.header__language-button')
 let animationStop = false;
 let slides = 0;
+
+
+window.addEventListener('load', () => {
+    document.body.style.overflow = 'auto';
+    if (preloader) {
+        preloader.classList.add('preloader--deactive');
+        setTimeout(() => {
+            document.body.removeChild(preloader);
+        }, 200)
+    }
+})
+
+document.addEventListener('DOMContentLoaded', () => {
+    if (langButton.textContent == 'en') {
+        if (title.textContent == 'Home - ipokerunion') {
+            title.textContent = 'Главная - ipokerunion';
+        } else if (title.textContent == 'Black list - ipokerunion') {
+            title.textContent = 'Черный список - ipokerunion';
+        }
+    } else {
+        if (title.textContent == 'Главная - ipokerunion') {
+            title.textContent = 'Home - ipokerunion';
+        } else if (title.textContent == 'Черный список - ipokerunion') {
+            title.textContent = 'Black list - ipokerunion';
+        }
+    }
+})
+
 
 if (screen.availWidth > 1200) {
     slides = 5;
@@ -56,7 +87,6 @@ burgerNavLink.forEach(elem => elem.addEventListener('click', () => {
 linkModal.forEach(elem => elem.addEventListener('click', (e) => {
     e.preventDefault();
     openModalLink();
-    console.log()
 }))
 
 var swiper = new Swiper(swiperBlock, {

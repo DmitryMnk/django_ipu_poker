@@ -11,6 +11,10 @@ class BlackListHeaders(models.Model):
     number = models.IntegerField(unique=True, verbose_name='Номер')
 
 
+class ContactItem(models.Model):
+    name = models.CharField(max_length=100, verbose_name='Contact')
+
+
 class WhiteListRow(models.Model):
     col_1 = models.CharField(max_length=100, verbose_name='Application', null=True, blank=True)
     col_2 = models.CharField(max_length=100, verbose_name='Club', null=True, blank=True)
@@ -19,7 +23,7 @@ class WhiteListRow(models.Model):
 
 class BlackListRow(models.Model):
     col_1 = models.CharField(max_length=100, verbose_name='Application', null=True, blank=True)
-    col_2 = models.CharField(max_length=100, verbose_name='Contact', null=True, blank=True)
+    col_2 = models.ManyToManyField(ContactItem, verbose_name='Contact', blank=True)
     col_3 = models.CharField(max_length=100, verbose_name='Club', null=True, blank=True)
     col_4 = models.CharField(max_length=100, verbose_name='Union', null=True, blank=True)
     col_5 = models.CharField(max_length=100, verbose_name='Reason', null=True, blank=True)

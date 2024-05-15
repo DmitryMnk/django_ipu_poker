@@ -1,0 +1,66 @@
+{% extends 'users/base.html' %}
+    
+{% block body %}
+    <section class="auth">
+        <div class="conteiner">
+            <div class="auth__content">
+                <a href="{% url 'admin_panel' %}" class="auth__back-link header__nav-link reset-link">
+                    <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+                    <svg class="auth__back-link-svg" width="30px" height="30px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <g id="icomoon-ignore">
+                    </g>
+                    <path d="M14.389 7.956v4.374l1.056 0.010c7.335 0.071 11.466 3.333 12.543 9.944-4.029-4.661-8.675-4.663-12.532-4.664h-1.067v4.337l-9.884-7.001 9.884-7zM15.456 5.893l-12.795 9.063 12.795 9.063v-5.332c5.121 0.002 9.869 0.26 13.884 7.42 0-4.547-0.751-14.706-13.884-14.833v-5.381z">
+    
+                    </path>
+                    </svg>
+                    назад
+                </a>
+                <h3 class="auth__title reset-text">{{ list_info }}</h2>
+                <form class="auth__form" method="POST">
+                    {% csrf_token %}
+                    <div class="auth__form-block">
+                        <p class="auth__form-block-tag reset-text">Application</p>
+                        <input maxlength="100" type="text" name="col_1" class="auth__form-block-input" value="{{row.col_1}}">
+                    </div>
+                    
+                    <div class="auth__from-add-block">
+                        <div class="auth__form-block">
+                            <p class="auth__form-block-tag reset-text">Contact</p>
+                            {% if row.col_2.all %}
+                                {% for line in row.col_2.all %}
+                                    <input maxlength="100" value="{{line.name}}" name="col_2" type="text" class="auth__form-block-input first-block-input">
+                                {% endfor %}
+                            {% else %}
+                                <input name="col_2" type="text" class="auth__form-block-input first-block-input">
+                            {% endif %}
+                        </div>
+                        <button class="auth__form-add-button auth-button reset-button">Добавить строку</button>
+                        <button class="auth__form-delete-button auth-button reset-button">Удалить строку</button>
+                    </div>
+                    
+                    <div class="auth__form-block">
+                        <p class="auth__form-block-tag reset-text">Club</p>
+                        <input maxlength="100" value="{{row.col_3}}" name="col_3" type="text" class="auth__form-block-input">
+                    </div>
+    
+                    <div class="auth__form-block">
+                        <p class="auth__form-block-tag reset-text">Union</p>
+                        <input maxlength="100" value="{{row.col_4}}"  name="col_4" type="text" class="auth__form-block-input">
+                    </div>
+    
+                    <div class="auth__form-block">
+                        <p class="auth__form-block-tag reset-text">Reason</p>
+                        <input maxlength="100" value="{{row.col_5}}" name="col_5" type="text" class="auth__form-block-input">
+                    </div>
+    
+                    <div class="auth__form-block">
+                        <p class="auth__form-block-tag reset-text">Over information</p>
+                        <input maxlength="100" value="{{row.col_6}}" name="col_6" type="text" class="auth__form-block-input">
+                    </div>
+                    <button class="auth__form-button reset-button">редактировать</button>
+                </form>
+            </div>
+        </div>
+        
+    </section>
+{% endblock %}

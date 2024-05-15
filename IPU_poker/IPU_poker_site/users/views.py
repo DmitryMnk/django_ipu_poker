@@ -2,7 +2,7 @@ from django.contrib.auth import logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView
 from django.http import HttpRequest, HttpResponse
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 from django.urls import reverse_lazy
 from django.utils.translation import gettext
 from django.views.generic import TemplateView, CreateView, UpdateView
@@ -57,11 +57,8 @@ class CreateWRowView(LoginRequiredMixin, CreateView):
         return context
 
 
-class CreateBRowView(LoginRequiredMixin, CreateView):
-    template_name = 'users/create_row.html'
-    model = BlackListRow
-    fields = 'col_1', 'col_2', 'col_3', 'col_4', 'col_5', 'col_6',
-    success_url = reverse_lazy('admin_panel')
+class CreateBRowView(LoginRequiredMixin, TemplateView):
+    template_name = 'users/create_brow.html'
 
     def get_context_data(self, **kwargs):
         context = super(CreateBRowView, self).get_context_data(**kwargs)
@@ -70,6 +67,27 @@ class CreateBRowView(LoginRequiredMixin, CreateView):
             'title': 'Добавить в черный лист'
         })
         return context
+
+    @staticmethod
+    def post(request):
+        data = request.POST
+        new_row = BlackListRow.objects.create(
+            col_1=data['col_1'],
+            col_3=data['col_3'],
+            col_4=data['col_4'],
+            col_5=data['col_5'],
+            col_6=data['col_6'],
+        )
+        new_row.save()
+        contacts = data.getlist('col_2')
+        for contact in contacts:
+            new_contact = ContactItem.objects.create(
+                name=contact
+            )
+            new_contact.save()
+            new_row.col_2.add(new_contact)
+
+        return redirect('admin_panel')
 
 
 class UpdateWRowView(LoginRequiredMixin, UpdateView):
@@ -80,26 +98,53 @@ class UpdateWRowView(LoginRequiredMixin, UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super(UpdateWRowView, self).get_context_data(**kwargs)
+        pk = self.get_object().pk
+        row = WhiteListRow.objects.get(pk=pk)
         context.update({
             'list_info': 'Редактировать строку белого листа',
-            'title': 'Редактировать строку б.л.'
+            'title': 'Редактировать строку б.л.',
         })
         return context
 
 
-class UpdateBRowView(LoginRequiredMixin, UpdateView):
-    template_name = 'users/update.html'
-    model = BlackListRow
-    fields = 'col_1', 'col_2', 'col_3', 'col_4', 'col_5', 'col_6',
-    success_url = reverse_lazy('admin_panel')
+class UpdateBRowView(LoginRequiredMixin, TemplateView):
+    template_name = 'users/updateb.html'
 
     def get_context_data(self, **kwargs):
-        context = super(UpdateBRowView, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
+        pk = self.kwargs['pk']
+        row = get_object_or_404(BlackListRow, pk=pk)
         context.update({
             'list_info': 'Редактировать строку черного листа',
-            'title': 'Редактировать строку ч.л.'
+            'title': 'Редактировать строку ч.л.',
+            'row': row
         })
         return context
+
+    def post(self, request, pk):
+        row = get_object_or_404(BlackListRow, pk=pk)
+        data = request.POST
+        BlackListRow.objects.filter(pk=pk).update(
+            col_1=data['col_1'],
+            col_3=data['col_3'],
+            col_4=data['col_4'],
+            col_5=data['col_5'],
+            col_6=data['col_6'],
+        )
+
+        for obj in row.col_2.all():
+            row.col_2.remove(obj)
+            obj.delete()
+
+        contacts = data.getlist('col_2')
+        for contact in contacts:
+            new_contact = ContactItem.objects.create(
+                name=contact
+            )
+            new_contact.save()
+            row.col_2.add(new_contact)
+
+        return redirect('admin_panel')
 
 
 class UpdateBHeadView(LoginRequiredMixin, UpdateView):

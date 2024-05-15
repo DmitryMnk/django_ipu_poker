@@ -86,11 +86,11 @@
                                     {% endif %}
                                 </div>
                                 <div class="tables__list-item-block redact-tables-list-item">
-                                    {% if row.col_2 == None %}
-                                    
-                                    {% else %}
-                                        {{ row.col_2 }}
-                                    {% endif %}
+                                    {% for item in row.col_2.all %}
+                                            <p class="reset-text tables__list-item-text">
+                                                {{item.name}}
+                                            </p>
+                                    {% endfor %}
                                 </div>
                                 <div class="tables__list-item-block redact-tables-list-item">
                                     {% if row.col_3 == None %}

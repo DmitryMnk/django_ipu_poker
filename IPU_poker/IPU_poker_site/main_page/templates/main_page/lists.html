@@ -1,6 +1,11 @@
 {% extends 'main_page/base.html' %}
 {% load i18n %}
+{% block description %}
+    <meta name="description" content="Клубы, агенты, контакты добавленные в чёрный список по нашему мнению несут вред индустрии и мы считаем нашим долгом предупредить игроков и коллег о опасности. Если вы столкнулись с нечестным поведением со стороны представителей индустрии вы можете связать с нами, при наличии достаточных доказательств они попадут в публичный чёрный список."> 
+{% endblock %}
+
 {% block body %}
+
     <main>
         <div class="container">
             <section class=" socials">
@@ -91,7 +96,8 @@
                                 <li class="tables__list-item first-table-list-item">
                                     {% for head in w_headers %}
                                         <div class="tables__list-item-block-white w-list-card">
-                                            {{ head.name }}
+                                            <p class="reset-text tables__list-item-head">{{ head.name }}</p>
+                                            
                                         </div>
                                     {% endfor %}
                                 </li>
@@ -101,21 +107,21 @@
                                             {% if row.col_1 == None %}
                                             
                                             {% else %}
-                                                {{ row.col_1 }}
+                                                <p class="reset-text tables__list-item-text">{{ row.col_1 }}</p>
                                             {% endif %}
                                         </div>
                                         <div class="tables__list-item-block-white w-list-card">
                                             {% if row.col_2 == None %}
                                             
                                             {% else %}
-                                                {{ row.col_2 }}
+                                                <p class="reset-text tables__list-item-text">{{ row.col_2 }}</p>
                                             {% endif %}
                                         </div>
                                         <div class="tables__list-item-block-white w-list-card">
                                             {% if row.col_3 == None %}
                                             
                                             {% else %}
-                                                {{ row.col_3 }}
+                                                <p class="reset-text tables__list-item-text">{{ row.col_3 }}</p>
                                             {% endif %}
                                         </div>
                                     </li>
@@ -139,7 +145,7 @@
                             <li class="tables__list-item first-table-list-item">
                                 {% for head in b_headers %}
                                     <div class="tables__list-item-block">
-                                        {{ head.name }}
+                                        <p class="reset-text tables__list-item-head">{{ head.name }}</p>
                                     </div>
                                 {% endfor %}
                             </li>
@@ -149,42 +155,43 @@
                                         {% if row.col_1 == None %}
                                         
                                         {% else %}
-                                            {{ row.col_1 }}
+                                            <p class="reset-text tables__list-item-text">{{ row.col_1 }}</p>
+                                            
                                         {% endif %}
                                     </div>
                                     <div class="tables__list-item-block">
-                                        {% if row.col_2 == None %}
-                                        
-                                        {% else %}
-                                            {{ row.col_2 }}
-                                        {% endif %}
+                                        {% for item in row.col_2.all %}
+                                            <p class="reset-text tables__list-item-text">
+                                                {{item.name}}
+                                            </p>
+                                        {% endfor %}
                                     </div>
                                     <div class="tables__list-item-block">
                                         {% if row.col_3 == None %}
                                         
                                         {% else %}
-                                            {{ row.col_3 }}
+                                        <p class="reset-text tables__list-item-text">{{ row.col_3 }}</p>
                                         {% endif %}
                                     </div>
                                     <div class="tables__list-item-block">
                                         {% if row.col_4 == None %}
                                         
                                         {% else %}
-                                            {{ row.col_4 }}
+                                            <p class="reset-text tables__list-item-text">{{ row.col_4 }}</p>
                                         {% endif %}
                                     </div>
                                     <div class="tables__list-item-block">
                                         {% if row.col_5 == None %}
                                         
                                         {% else %}
-                                            {{ row.col_5 }}
+                                        <p class="reset-text tables__list-item-text">{{ row.col_5 }}</p>
                                         {% endif %}
                                     </div>
                                     <div class="tables__list-item-block">
                                         {% if row.col_6 == None %}
                                         
                                         {% else %}
-                                            {{ row.col_6 }}
+                                            <p class="reset-text tables__list-item-text">{{ row.col_6 }}</p>
                                         {% endif %}
                                     </div>
                                 </li>
